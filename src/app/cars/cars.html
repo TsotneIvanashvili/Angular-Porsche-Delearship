@@ -1,0 +1,39 @@
+<div class="porsche-cars-container">
+  @for (model of allModels; track model.id) {
+    <a
+      class="porsche-card"
+      [routerLink]="['/details', model.id]"
+    >
+      <div class="engine-badge">{{ model.engineType }}</div>
+
+      <div class="car-image-container">
+        <img [src]="model.imageUrl" [alt]="model.name" class="car-image" />
+      </div>
+
+      <div class="car-details">
+        <h2 class="car-name">{{ model.name }}</h2>
+        <p class="car-price">{{ model.price }}</p>
+
+        <div class="mainDet">
+          <div class="specs-container">
+            <div class="spec-item">
+              <h3 class="spec-value">{{ model.acceleration }}</h3>
+              <p class="spec-note">{{ model.accelerationNote }}</p>
+            </div>
+            <div class="spec-item">
+              <h3 class="spec-value">{{ model.horsepower }}</h3>
+              <p class="spec-note">{{ model.horsepowerNote }}</p>
+            </div>
+            <div class="spec-item">
+              <h3 class="spec-value">{{ model.topSpeed }}</h3>
+              <p class="spec-note">{{ model.topSpeedNote }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Only View Details button here -->
+        <div class="view-details">View Details</div>
+      </div>
+    </a>
+  }
+</div>

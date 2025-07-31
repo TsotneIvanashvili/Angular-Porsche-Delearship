@@ -1,0 +1,24 @@
+<div class="details-banner">
+  <h1 class="model-background-text">{{ modelType }}</h1>
+  <img [src]="model?.imageUrl" [alt]="model?.name" class="car-banner-image" />
+</div>
+
+<div class="details-info">
+  <h2>{{ model?.name }}</h2>
+  <p class="price">{{ model?.price }}</p>
+
+  <div class="specs">
+    <div>
+      <h3>{{ model?.acceleration }}</h3>
+      <p>{{ model?.accelerationNote }}</p>
+    </div>
+    <div>
+      <h3>{{ model?.horsepower }}</h3>
+      <p>{{ model?.horsepowerNote }}</p>
+    </div>
+    <div>
+      <h3>{{ model?.topSpeed }}</h3>
+      <p>{{ model?.topSpeedNote }}</p>
+    </div>
+  </div>
+</div>

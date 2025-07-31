@@ -1,0 +1,199 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.left-section,
+.center-section,
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.left-section {
+  gap: 8px;
+  cursor: pointer;
+}
+
+.menu-label {
+  font-weight: 500;
+  font-size: 1rem;
+  color: #111;
+}
+
+.burger-icon {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 7px;
+
+}
+
+p{
+    font-size: 17px;
+}
+
+
+.center-section {
+  justify-content: center;
+  flex: 1;
+}
+
+.brand-text {
+  font-family: 'Porsche Next', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+}
+
+.brand-logo {
+  display: none;
+  height: 28px;
+}
+
+/* Font Awesome icon */
+.icon {
+  font-size: 1.2rem;
+  color: #111;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brand-text {
+    display: none;
+  }
+
+  .brand-logo {
+    display: inline;
+  }
+}
+
+/* Burger Menu Sidebar */
+.burger-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;          /* full height */
+  width: 300px;           /* sidebar width */
+  background: white;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;      /* give space from top */
+  z-index: 200;
+
+  /* Start hidden off screen */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+/* When burger menu is open: translate to 0 */
+.burger-menu.open {
+  transform: translateX(0);
+}
+
+/* Overlay behind sidebar */
+.burger-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+}
+
+/* Burger menu links */
+.burger-menu a {
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #111;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.burger-menu .burgdiv:hover {
+  background: #e4e4e4;
+  border-radius: 10px;
+}
+
+/* Profile Dropdown */
+
+.profile {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Default hidden */
+.profile-popup {
+  position: absolute;
+  top: 130%;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 0.6rem 0;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px) scale(0.95);
+  transition: opacity 250ms ease, transform 250ms ease, visibility 250ms;
+  user-select: none;
+  z-index: 1000;
+}
+
+/* Show dropdown when .visible class is added */
+.profile-popup.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  user-select: auto;
+}
+
+.profile-popup a {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+  border-radius: 6px;
+}
+
+.profile-popup a:hover {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.burgdiv{
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 50px;
+    padding-right: 5px;
+    transition: 0.3s;
+}
+
+
+a{
+    font-size: 30px;
+}
+
+.i{
+    height: 100px;
+}

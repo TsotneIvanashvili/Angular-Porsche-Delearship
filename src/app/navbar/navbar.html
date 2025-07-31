@@ -1,0 +1,75 @@
+<nav class="navbar">
+  <!-- Menu Icon -->
+  <div class="left-section" (click)="toggleBurger()">
+    <span class="burger-icon">☰ <p>Menu</p></span>
+  </div>
+
+  <!-- Porsche Text or Logo -->
+  <div class="center-section">
+    <span class="brand-text">PORSCHE</span>
+    <img
+      class="brand-logo"
+      src="https://cdn.ui.porsche.com/porsche-design-system/crest/porsche-crest.2245c45@2x.webp"
+      alt="Porsche Logo"
+    />
+  </div>
+
+  <!-- Profile Icon & Click Popup -->
+  <div class="right-section">
+    <div class="profile" (click)="toggleProfilePopup()" tabindex="0">
+      <i class="fa fa-user icon"></i>
+
+      <div
+        class="profile-popup"
+        [class.visible]="showPopup"
+      >
+        <a routerLink="/sign-in" (click)="closeProfilePopup()">Sign In</a>
+        <a routerLink="/sign-up" (click)="closeProfilePopup()">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Overlay for burger menu -->
+@if (isBurgerOpen) {
+  <div
+    class="burger-overlay"
+    (click)="closeBurger()"
+  ></div>
+}
+
+<!-- Burger Menu Sidebar -->
+<div
+  class="burger-menu"
+  [class.open]="isBurgerOpen"
+>
+
+    <div class="mainBurg">
+        <div class="burgdiv">
+            <a routerLink="/" (click)="closeBurger()">Models</a><i id="i">></i>
+        </div>
+
+        <div class="burgdiv">
+            <a routerLink="/explore" (click)="closeBurger()">Shopping Tools</a><i id="i">></i>
+        </div>
+
+        <div class="burgdiv">
+            <a routerLink="/contact" (click)="closeBurger()">Porsche Shop</a>
+        </div>
+
+        <div class="burgdiv">
+            <a routerLink="/about" (click)="closeBurger()">Services</a><i id="i">></i>
+        </div>
+
+            <div class="burgdiv">
+            <a routerLink="/about" (click)="closeBurger()">Experience</a><i id="i">></i>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>

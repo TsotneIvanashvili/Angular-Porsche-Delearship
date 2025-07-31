@@ -1,0 +1,119 @@
+.details-banner {
+  position: relative;
+  background: #f5f5f5;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* Big faded model number in background */
+.model-background-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18rem;
+  font-weight: 900;
+  color: rgba(200, 200, 200, 0.25);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: font-size 0.3s ease, top 0.3s ease;
+}
+
+/* Car image slightly lower but still centered horizontally */
+.car-banner-image {
+  position: absolute;
+  left: 50%;
+  top: 65%; /* push car a bit lower */
+  transform: translate(-50%, -50%);
+  max-height: 300px;
+  max-width: 90%;
+  z-index: 2;
+  object-fit: contain;
+  transition: transform 0.5s, max-height 0.3s ease, top 0.3s ease;
+}
+
+.car-banner-image:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .model-background-text {
+    font-size: 12rem;
+    top: 50%;
+  }
+
+  .car-banner-image {
+    max-height: 220px;
+    top: 63%;
+  }
+}
+
+@media (max-width: 768px) {
+  .model-background-text {
+    font-size: 9rem;
+    top: 48%;
+  }
+
+  .car-banner-image {
+    max-height: 180px;
+    top: 62%;
+  }
+}
+
+@media (max-width: 480px) {
+  .details-banner {
+    height: 400px;
+  }
+
+  .model-background-text {
+    font-size: 6rem;
+    top: 46%;
+  }
+
+  .car-banner-image {
+    max-height: 140px;
+    top: 61%;
+  }
+}
+.details-info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.details-info h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.specs {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.specs div {
+  text-align: center;
+}
+
+.specs h3 {
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.specs p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+
