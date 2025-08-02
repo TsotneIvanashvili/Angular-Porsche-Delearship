@@ -1,9 +1,19 @@
-<div class="carousel-wrapper">
-  @for (image of images; track image) {
-    <img
-      [src]="image"
-      class="carousel-img"
-      [class.active]="images.indexOf(image) === activeIndex()"
-    />
-  }
+<div class="carousel-container">
+  <div
+    class="carousel-track"
+    [style.transform]="'translateX(-' + activeIndex() * 100 + '%)'"
+  >
+    @for (image of images; track image) {
+      <div class="carousel-slide">
+        <img [src]="image" alt="Car" />
+      </div>
+    }
+  </div>
+
+  <button class="arrow left" (click)="prev(); resetAutoSlide()">
+    &#10094;
+  </button>
+  <button class="arrow right" (click)="next(); resetAutoSlide()">
+    &#10095;
+  </button>
 </div>
