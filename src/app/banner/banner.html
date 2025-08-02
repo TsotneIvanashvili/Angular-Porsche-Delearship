@@ -1,0 +1,9 @@
+<div class="carousel-wrapper">
+  @for (image of images; track image) {
+    <img
+      [src]="image"
+      class="carousel-img"
+      [class.active]="images.indexOf(image) === activeIndex()"
+    />
+  }
+</div>
