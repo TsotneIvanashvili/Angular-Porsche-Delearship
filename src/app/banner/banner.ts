@@ -20,14 +20,18 @@ export class BannerComponent implements OnInit {
   activeIndex = signal(0);
   intervalId!: any;
 
+  startX = 0;
+  currentX = 0;
+  dragging = false;
+  hasMoved = false;
+  canSlide = true;
+
   ngOnInit(): void {
     this.startAutoSlide();
   }
 
   startAutoSlide() {
-    this.intervalId = setInterval(() => {
-      this.next();
-    }, 3000);
+    this.intervalId = setInterval(() => this.next(), 3000);
   }
 
   resetAutoSlide() {
@@ -36,13 +40,75 @@ export class BannerComponent implements OnInit {
   }
 
   next() {
-    const nextIndex = (this.activeIndex() + 1) % this.images.length;
-    this.activeIndex.set(nextIndex);
+    if (!this.canSlide) return;
+
+    this.canSlide = false;
+    this.activeIndex.set((this.activeIndex() + 1) % this.images.length);
+
+    setTimeout(() => {
+      this.canSlide = true;
+    }, 1000);
   }
 
   prev() {
-    const prevIndex =
-      (this.activeIndex() - 1 + this.images.length) % this.images.length;
-    this.activeIndex.set(prevIndex);
+    if (!this.canSlide) return;
+
+    this.canSlide = false;
+    this.activeIndex.set(
+      (this.activeIndex() - 1 + this.images.length) % this.images.length
+    );
+
+    setTimeout(() => {
+      this.canSlide = true;
+    }, 1000);
+  }
+
+  getTransform(): string {
+    const offsetPercent = this.dragging
+      ? ((this.currentX - this.startX) / window.innerWidth) * 100
+      : 0;
+
+    return `translateX(${this.activeIndex() * -100 + offsetPercent}%)`;
+  }
+
+  onDragStart(event: MouseEvent | TouchEvent) {
+    if (!this.canSlide) return;
+    if (event.cancelable) event.preventDefault();
+
+    this.dragging = true;
+    this.hasMoved = false;
+    this.startX = this.getPositionX(event);
+    this.currentX = this.startX;
+    this.resetAutoSlide();
+  }
+
+  onDragMove(event: MouseEvent | TouchEvent) {
+    if (!this.dragging) return;
+
+    this.currentX = this.getPositionX(event);
+    const moved = Math.abs(this.currentX - this.startX);
+
+    if (moved > 10) {
+      this.hasMoved = true;
+    }
+  }
+
+  onDragEnd() {
+    if (!this.dragging || !this.canSlide) return;
+
+    const diff = this.currentX - this.startX;
+
+    if (this.hasMoved && Math.abs(diff) > 50) {
+      diff > 0 ? this.prev() : this.next();
+    }
+
+    this.dragging = false;
+    this.startX = 0;
+    this.currentX = 0;
+    this.hasMoved = false;
+  }
+
+  getPositionX(event: MouseEvent | TouchEvent): number {
+    return event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
   }
 }

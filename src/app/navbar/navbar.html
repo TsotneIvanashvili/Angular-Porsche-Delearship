@@ -32,44 +32,46 @@
 
 <!-- Overlay for burger menu -->
 @if (isBurgerOpen) {
-  <div
-    class="burger-overlay"
-    (click)="closeBurger()"
-  ></div>
+  <div class="burger-overlay" (click)="closeBurger()"></div>
 }
 
-<!-- Burger Menu Sidebar -->
-<div
-  class="burger-menu"
-  [class.open]="isBurgerOpen"
->
+<!-- Burger menu + car images wrapper -->
+<div class="burger-menu-wrapper" [class.open]="isBurgerOpen">
 
+  <!-- Existing burger menu -->
+  <div class="burger-menu">
     <div class="mainBurg">
-        <div class="burgdiv">
-            <a routerLink="/" (click)="closeBurger()">Models</a><i id="i">></i>
-        </div>
-
-        <div class="burgdiv">
-            <a routerLink="/explore" (click)="closeBurger()">Shopping Tools</a><i id="i">></i>
-        </div>
-
-        <div class="burgdiv">
-            <a routerLink="/contact" (click)="closeBurger()">Porsche Shop</a>
-        </div>
-
-        <div class="burgdiv">
-            <a routerLink="/about" (click)="closeBurger()">Services</a><i id="i">></i>
-        </div>
-
-            <div class="burgdiv">
-            <a routerLink="/about" (click)="closeBurger()">Experience</a><i id="i">></i>
-        </div>
+      <div class="burgdiv">
+        <a routerLink="/" (click)="closeBurger()">Models</a><i id="i">></i>
+      </div>
+      <div class="burgdiv">
+        <a routerLink="/explore" (click)="closeBurger()">Shopping Tools</a><i id="i">></i>
+      </div>
+      <div class="burgdiv">
+        <a routerLink="/contact" (click)="closeBurger()">Porsche Shop</a>
+      </div>
+      <div class="burgdiv">
+        <a routerLink="/about" (click)="closeBurger()">Services</a><i id="i">></i>
+      </div>
+      <div class="burgdiv">
+        <a routerLink="/about" (click)="closeBurger()">Experience</a><i id="i">></i>
+      </div>
     </div>
+  </div>
 
-
-
-
-
-
-
+  <!-- Car images column -->
+  <div class="car-images-column">
+    <img
+      src="https://images-porsche.imgix.net/-/media/673D5125F9EE4F73BFB55EDD5707D5E5_96B1785F323441A792E878F8C52F63ED_718-Cayman-sideshot?w=300&q=45&auto=format"
+      alt="Porsche Car 1"
+    />
+    <img
+      src="https://images-porsche.imgix.net/-/media/9CD53A02737F40A0806BB5EAE1A80F54_D92CC07A446F4B0A8A492A88DD260C0C_911_carrera_gts_sideshot?w=300&q=45&auto=format"
+      alt="Porsche Car 2"
+    />
+    <img
+      src="https://images-porsche.imgix.net/-/media/E27875C9513D4899B596093AC53B7407_8EA111E8A92F4A7BAC344DAD79DA99EE_718-Boxster-GTS-40-sideshot?w=300&q=45&auto=format"
+      alt="Porsche Car 3"
+    />
+  </div>
 </div>

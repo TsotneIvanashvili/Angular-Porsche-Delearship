@@ -1,3 +1,4 @@
+/* Navbar basic styling */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -22,25 +23,17 @@
   cursor: pointer;
 }
 
-.menu-label {
-  font-weight: 500;
-  font-size: 1rem;
-  color: #111;
-}
-
 .burger-icon {
   font-size: 1.2rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 7px;
-
 }
 
-p{
-    font-size: 17px;
+p {
+  font-size: 17px;
 }
-
 
 .center-section {
   justify-content: center;
@@ -77,31 +70,7 @@ p{
   }
 }
 
-/* Burger Menu Sidebar */
-.burger-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;          /* full height */
-  width: 300px;           /* sidebar width */
-  background: white;
-  border-right: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  padding-top: 60px;      /* give space from top */
-  z-index: 200;
-
-  /* Start hidden off screen */
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-}
-
-/* When burger menu is open: translate to 0 */
-.burger-menu.open {
-  transform: translateX(0);
-}
-
-/* Overlay behind sidebar */
+/* Burger Menu Overlay */
 .burger-overlay {
   position: fixed;
   top: 0; left: 0;
@@ -110,12 +79,55 @@ p{
   z-index: 150;
 }
 
-/* Burger menu links */
+/* Wrapper for burger menu + images */
+.burger-menu-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  display: flex;
+  background: white;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  width: 600px; /* 300px menu + 300px images */
+  padding-top: 60px;
+  flex-direction: row; /* side by side on desktop */
+}
+
+.burger-menu-wrapper.open {
+  transform: translateX(0);
+}
+
+/* Burger menu */
+.burger-menu {
+  width: 300px;
+  border-right: 1px solid #ddd;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+/* Burger menu links styling */
 .burger-menu a {
   padding: 1rem 1.5rem;
   text-decoration: none;
   color: #111;
   font-size: 1rem;
+  transition: 0.3s;
+}
+
+.burger-menu .burgdiv {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 50px;
+  padding-right: 5px;
   transition: 0.3s;
 }
 
@@ -125,13 +137,11 @@ p{
 }
 
 /* Profile Dropdown */
-
 .profile {
   position: relative;
   cursor: pointer;
 }
 
-/* Default hidden */
 .profile-popup {
   position: absolute;
   top: 130%;
@@ -154,7 +164,6 @@ p{
   z-index: 1000;
 }
 
-/* Show dropdown when .visible class is added */
 .profile-popup.visible {
   opacity: 1;
   visibility: visible;
@@ -177,23 +186,59 @@ p{
   color: #000;
 }
 
-.burgdiv{
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 20px;
-    margin-right: 20px;
-    height: 50px;
-    padding-right: 5px;
-    transition: 0.3s;
+/* Car images column next to burger menu */
+.car-images-column {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
-
-a{
-    font-size: 30px;
+.car-images-column img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.i{
+.car-images-column img:hover {
+  transform: scale(1.05);
+}
+
+/* ------------------- RESPONSIVE ------------------- */
+@media (max-width: 768px) {
+  .burger-menu-wrapper {
+    width: 100vw; /* full viewport width */
+    flex-direction: column; /* stack menu and images vertically */
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding-top: 60px;
+  }
+
+  .burger-menu {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .car-images-column {
+    width: 100%;
+    padding-left: 0;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 15px;
+  }
+
+  .car-images-column img {
+    width: auto;
     height: 100px;
+    flex-shrink: 0;
+    border-radius: 10px;
+  }
 }

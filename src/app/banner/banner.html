@@ -1,19 +1,22 @@
-<div class="carousel-container">
+<div
+  class="carousel-container"
+  (mousedown)="onDragStart($event)"
+  (mousemove)="onDragMove($event)"
+  (mouseup)="onDragEnd()"
+  (mouseleave)="onDragEnd()"
+  (touchstart)="onDragStart($event)"
+  (touchmove)="onDragMove($event)"
+  (touchend)="onDragEnd()"
+>
   <div
     class="carousel-track"
-    [style.transform]="'translateX(-' + activeIndex() * 100 + '%)'"
+    [style.transform]="getTransform()"
+    [style.transition]="dragging ? 'none' : 'transform 1s ease'"
   >
     @for (image of images; track image) {
       <div class="carousel-slide">
-        <img [src]="image" alt="Car" />
+        <img [src]="image" alt="Car" draggable="false" />
       </div>
     }
   </div>
-
-  <button class="arrow left" (click)="prev(); resetAutoSlide()">
-    &#10094;
-  </button>
-  <button class="arrow right" (click)="next(); resetAutoSlide()">
-    &#10095;
-  </button>
 </div>
